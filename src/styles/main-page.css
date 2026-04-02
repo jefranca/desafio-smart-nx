@@ -14,13 +14,36 @@
 }
 
 .eyebrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
   margin-bottom: 12px;
   color: #38bdf8;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.brand-name {
+  display: inline-flex;
+  align-items: baseline;
+  margin-left: 0.35rem;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.brand-name-smart {
+  color: #f8fafc;
+}
+
+.brand-name-nx {
+  background: linear-gradient(90deg, #7c3aed 0%, #2563eb 55%, #22c1ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 h1 {

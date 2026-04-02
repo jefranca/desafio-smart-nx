@@ -8,7 +8,13 @@ function App() {
   return (
     <main className="app">
       <section className="card">
-        <span className="eyebrow">Desafio Tecnico Smart Nx</span>
+        <div className="eyebrow">
+          <span>Desafio Tecnico  </span>
+          <span className="brand-name">
+            <span className="brand-name-smart">smart</span>
+            <span className="brand-name-nx">nx</span>
+          </span>
+        </div>
         <h1>Personagens de Star Wars</h1>
 
         {isLoading ? (
