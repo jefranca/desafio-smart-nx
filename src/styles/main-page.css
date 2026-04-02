@@ -1,16 +1,19 @@
 .app {
   min-height: 100vh;
   padding: 0;
+  background:
+    radial-gradient(circle at top right, rgba(34, 193, 255, 0.12), transparent 24%),
+    radial-gradient(circle at left top, rgba(124, 58, 237, 0.12), transparent 20%),
+    #0f172a;
 }
 
-.card {
-  width: 100%;
+.page-content {
   min-height: 100vh;
   padding: 32px;
-  border: 0;
-  border-radius: 0;
-  background: #111827;
-  box-shadow: none;
+}
+
+.page-header {
+  margin-bottom: 28px;
 }
 
 .eyebrow {
@@ -48,13 +51,17 @@
 
 h1 {
   margin: 0 0 12px;
-  font-size: 2rem;
+  font-size: clamp(2rem, 3vw, 3.2rem);
 }
 
 p {
   margin: 0;
   color: #cbd5e1;
   line-height: 1.6;
+}
+
+.page-description {
+  max-width: 68ch;
 }
 
 .message {
@@ -65,8 +72,39 @@ p {
   color: #fca5a5;
 }
 
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border: 1px solid #253247;
+  border-radius: 18px;
+  background: rgba(17, 24, 39, 0.84);
+  backdrop-filter: blur(10px);
+}
+
+.summary-card span {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.summary-card strong {
+  color: #f8fafc;
+  font-size: 1.5rem;
+}
+
 @media (max-width: 768px) {
-  .card {
+  .page-content {
     padding: 24px;
+  }
+
+  .summary-bar {
+    grid-template-columns: 1fr;
   }
 }

@@ -3,17 +3,35 @@ import '../styles/character-card.css';
 function CharacterCard({ character }) {
   return (
     <li className="character-item">
+      <div className="character-card-top">
+        <span className="character-badge">{character.gender}</span>
+        <span className="character-badge">{character.birth_year}</span>
+      </div>
+
       <strong>{character.name}</strong>
 
-      <div className="character-details">
-        <span>Altura: {character.height} cm</span>
-        <span>Peso: {character.mass} kg</span>
-        <span>Ano de nascimento: {character.birth_year}</span>
-        <span>Genero: {character.gender}</span>
-        <span>Cor do cabelo: {character.hair_color}</span>
-        <span>Cor da pele: {character.skin_color}</span>
-        <span>Cor dos olhos: {character.eye_color}</span>
-      </div>
+      <dl className="character-details">
+        <div className="character-detail-row">
+          <dt>Altura</dt>
+          <dd>{character.height} cm</dd>
+        </div>
+        <div className="character-detail-row">
+          <dt>Peso</dt>
+          <dd>{character.mass} kg</dd>
+        </div>
+        <div className="character-detail-row">
+          <dt>Cor do cabelo</dt>
+          <dd>{character.hair_color}</dd>
+        </div>
+        <div className="character-detail-row">
+          <dt>Cor da pele</dt>
+          <dd>{character.skin_color}</dd>
+        </div>
+        <div className="character-detail-row">
+          <dt>Cor dos olhos</dt>
+          <dd>{character.eye_color}</dd>
+        </div>
+      </dl>
     </li>
   );
 }

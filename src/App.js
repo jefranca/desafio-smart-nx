@@ -7,28 +7,31 @@ function App() {
 
   return (
     <main className="app">
-      <section className="card">
-        <div className="eyebrow">
-          <span>Desafio Tecnico  </span>
-          <span className="brand-name">
-            <span className="brand-name-smart">smart</span>
-            <span className="brand-name-nx">nx</span>
-          </span>
-        </div>
-        <h1>Personagens de Star Wars</h1>
+      <section className="page-content">
+        <header className="page-header">
+          <div className="eyebrow">
+            <span>Desafio Tecnico</span>
+            <span className="brand-name">
+              <span className="brand-name-smart">smart</span>
+              <span className="brand-name-nx">nx</span>
+            </span>
+          </div>
+          <h1>Personagens de Star Wars</h1>
+        </header>
+
+        <section className="summary-bar">
+          <div className="summary-card">
+            <span>Total carregado</span>
+            <strong>{characters.length}</strong>
+          </div>
+        </section>
 
         {isLoading ? (
-          <p>Carregando personagens...</p>
+          <p className="message">Carregando personagens...</p>
         ) : errorMessage ? (
           <p className="message message-error">{errorMessage}</p>
         ) : (
-          <>
-            <p className="message">
-              Total de personagens carregados: {characters.length}
-            </p>
-
-            <CharacterList characters={characters} />
-          </>
+          <CharacterList characters={characters} />
         )}
       </section>
     </main>
