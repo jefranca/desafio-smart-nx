@@ -35,12 +35,9 @@ function App() {
     <main className="app">
       <section className="page-content">
         <header className="page-header">
-          <div className="eyebrow">
-            <span>Desafio Tecnico</span>
-            <span className="brand-name">
-              <span className="brand-name-smart">smart</span>
-              <span className="brand-name-nx">nx</span>
-            </span>
+          <div className="brand-name">
+            <span className="brand-name-smart">smart</span>
+            <span className="brand-name-nx">nx</span>
           </div>
           <h1>Personagens de Star Wars</h1>
         </header>

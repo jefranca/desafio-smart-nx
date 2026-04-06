@@ -1,11 +1,45 @@
 import '../styles/character-card.css';
+import {
+  translateEyeColor,
+  translateGender,
+  translateHairColor,
+  translateSkinColor,
+} from '../services/characterTranslations';
+
+function formatWeight(value) {
+  if (!value || value.toLowerCase() === 'unknown') {
+    return 'desconhecido';
+  }
+
+  return `${value} kg`;
+}
+
+function formatHeight(value) {
+  if (!value || value.toLowerCase() === 'unknown') {
+    return 'desconhecido';
+  }
+
+  return `${value} cm`;
+}
+
+function formatBirthYear(value) {
+  if (!value || value.toLowerCase() === 'unknown') {
+    return 'desconhecido';
+  }
+
+  return value;
+}
 
 function CharacterCard({ character }) {
   return (
     <li className="character-item">
       <div className="character-card-top">
-        <span className="character-badge">{character.gender}</span>
-        <span className="character-badge">{character.birth_year}</span>
+        <span className="character-badge">
+          {translateGender(character.gender)}
+        </span>
+        <span className="character-badge">
+          {formatBirthYear(character.birth_year)}
+        </span>
       </div>
 
       <strong>{character.name}</strong>
@@ -13,23 +47,23 @@ function CharacterCard({ character }) {
       <dl className="character-details">
         <div className="character-detail-row">
           <dt>Altura</dt>
-          <dd>{character.height} cm</dd>
+          <dd>{formatHeight(character.height)}</dd>
         </div>
         <div className="character-detail-row">
           <dt>Peso</dt>
-          <dd>{character.mass} kg</dd>
+          <dd>{formatWeight(character.mass)}</dd>
         </div>
         <div className="character-detail-row">
           <dt>Cor do cabelo</dt>
-          <dd>{character.hair_color}</dd>
+          <dd>{translateHairColor(character.hair_color)}</dd>
         </div>
         <div className="character-detail-row">
           <dt>Cor da pele</dt>
-          <dd>{character.skin_color}</dd>
+          <dd>{translateSkinColor(character.skin_color)}</dd>
         </div>
         <div className="character-detail-row">
           <dt>Cor dos olhos</dt>
-          <dd>{character.eye_color}</dd>
+          <dd>{translateEyeColor(character.eye_color)}</dd>
         </div>
       </dl>
     </li>
