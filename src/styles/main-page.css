@@ -16,6 +16,44 @@
   margin-bottom: 28px;
 }
 
+.filter-bar {
+  margin-bottom: 28px;
+}
+
+.filter-field {
+  display: grid;
+  gap: 10px;
+  max-width: 420px;
+}
+
+.filter-field span {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filter-field input {
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-field input::placeholder {
+  color: #64748b;
+}
+
+.filter-field input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.14);
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: baseline;
@@ -74,7 +112,7 @@ p {
 
 .summary-bar {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 220px));
+  grid-template-columns: repeat(3, minmax(0, 220px));
   gap: 16px;
   margin-bottom: 28px;
 }
@@ -97,6 +135,20 @@ p {
 .summary-card strong {
   color: #f8fafc;
   font-size: 1.5rem;
+}
+
+.empty-state {
+  display: grid;
+  gap: 10px;
+  padding: 28px;
+  border: 1px solid #253247;
+  border-radius: 20px;
+  background: rgba(17, 24, 39, 0.84);
+}
+
+.empty-state h2 {
+  margin: 0;
+  color: #f8fafc;
 }
 
 @media (max-width: 768px) {

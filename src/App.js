@@ -9,9 +9,14 @@ const ITEMS_PER_PAGE = 10;
 function App() {
   const { characters, isLoading, errorMessage } = useCharacters();
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(characters.length / ITEMS_PER_PAGE);
+  const [searchTerm, setSearchTerm] = useState('');
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(normalizedSearchTerm)
+  );
+  const totalPages = Math.ceil(filteredCharacters.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedCharacters = characters.slice(
+  const paginatedCharacters = filteredCharacters.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
@@ -21,6 +26,10 @@ function App() {
       setCurrentPage(totalPages);
     }
   }, [currentPage, totalPages]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [normalizedSearchTerm]);
 
   return (
     <main className="app">
@@ -36,14 +45,34 @@ function App() {
           <h1>Personagens de Star Wars</h1>
         </header>
 
+        <section className="filter-bar">
+          <label className="filter-field" htmlFor="character-search">
+            <span>Filtrar por nome</span>
+            <input
+              id="character-search"
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Ex.: Luke, Leia, Vader..."
+              type="text"
+              value={searchTerm}
+            />
+          </label>
+        </section>
+
         <section className="summary-bar">
           <div className="summary-card">
             <span>Total carregado</span>
             <strong>{characters.length}</strong>
           </div>
           <div className="summary-card">
+            <span>Resultados</span>
+            <strong>{filteredCharacters.length}</strong>
+          </div>
+          <div className="summary-card">
             <span>Pagina atual</span>
-            <strong>{totalPages > 0 ? currentPage : 0}</strong>
+            <strong>
+              {totalPages > 0 ? currentPage : 0}
+              {totalPages > 0 ? `/${totalPages}` : ''}
+            </strong>
           </div>
         </section>
 
@@ -51,6 +80,11 @@ function App() {
           <p className="message">Carregando personagens...</p>
         ) : errorMessage ? (
           <p className="message message-error">{errorMessage}</p>
+        ) : filteredCharacters.length === 0 ? (
+          <div className="empty-state">
+            <h2>Nenhum personagem encontrado</h2>
+            <p>Tente buscar por outro nome para ver os resultados.</p>
+          </div>
         ) : (
           <>
             <Pagination
